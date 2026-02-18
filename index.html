@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daal - Nuestra Boda en Santa Marta</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@1,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <audio id="bgMusic" loop>
+      <source src="./assets/salguero.mp3" type="audio/mpeg" />
+    </audio>
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#historia">Nuestra Historia</a></li>
+        <li><a href="#evento">El Evento</a></li>
+        <li><a href="#alojamiento">Alojamiento</a></li>
+        <li><a href="#rsvp">Confirmar</a></li>
+        <li><a href="#registro">Regalos</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <h1>
+          <div
+            class="logo-container"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 150px;
+            "
+          >
+            <img
+              src="https://cf-templates-1gclp1pz85mda-us-east-1.s3.us-east-1.amazonaws.com/Recurso+5.png"
+              alt="DAAL"
+              style="width: 80%; height: 100%"
+            />
+          </div>
+        </h1>
+        <p class="date">25 DE ABRIL • 2026 • SANTA MARTA</p>
+      </div>
+      <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+      <h2>El reloj ya empezó a correr.</h2>
+      <div class="countdown" id="countdown">
+        <div class="countdown-box">
+          <span class="countdown-number" id="days">000</span>
+          <span class="countdown-label">Días</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number" id="hours">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number" id="minutes">00</span>
+          <span class="countdown-label">Minutos</span>
+        </div>
+        <div class="countdown-box">
+          <span class="countdown-number" id="seconds">00</span>
+          <span class="countdown-label">Segundos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="historia" class="our-story">
+      <h2>Nuestra Historia</h2>
+      <div class="story-content">
+        <p>
+          Nos conocimos por casualidad, gracias a amigos en común. La verdad,
+          apenas lo vi no le presté mucha atención, pero Julio sí; desde el
+          primer momento me “tiró el ojo”.
+        </p>
+        <p>
+          Ese día fuimos con nuestros amigos a Playa Salguero a tomarnos algo y
+          conversar frente al mar. Fue un plan sencillo, pero muy chévere. Julio
+          casi no me hablaba… hasta que estuvo un poquito tomado y decidió
+          preguntarme cómo me llamaba e iniciar la conversación.
+        </p>
+        <p>
+          Desde ahí comenzamos a hablar y a conectar. Más tarde nos fuimos a una
+          discoteca; bailamos, reímos y fue justo allí donde Julio me robó un
+          beso. Entre música, risas y miradas cómplices, intercambiamos números.
+          Yo, sinceramente, pensé que nunca volveríamos a hablar.
+        </p>
+        <p>
+          Pero al día siguiente apareció. Me invitó a otro plan y, sin darme
+          cuenta, empezamos a escribir nuestra historia.
+        </p>
+        <p>
+          Desde entonces no nos separamos. Lo que comenzó como una salida casual
+          entre amigos se convirtió en el amor más bonito, en planes juntos, en
+          sueños compartidos y en una vida que decidimos construir de la mano.
+        </p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Primer Encuentro</h3>
+              <span class="timeline-date">Noviembre 2016</span>
+              <p>
+                Una salida con amigos en Playa Salguero, yo relajada, él
+                “disimulando” que ya me había fichado. Entre brisa, mar y risas
+                empezó algo que ninguno veía venir.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>La propuesta</h3>
+              <span class="timeline-date">Marzo 2024</span>
+              <p>
+                Orlando, Florida en Walt Disney World Un día mágico, lleno de
+                adrenalina, sorpresas y un “¿te quieres casar conmigo?” que me
+                dejó sin palabras. Literal, nuestro propio cuento de hadas.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Viviendo Juntos</h3>
+              <span class="timeline-date">Julio 2025</span>
+              <p>
+                Decidimos mudarnos y empezar oficialmente nuestro hogar Ya no
+                más “tu casa o la mía”, ahora es la nuestra.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>¡Nuestra boda!</h3>
+              <span class="timeline-date">Abril 2026</span>
+              <p>
+                Celebraremos nuestro amor rodeados de familia, amigos y la magia
+                del Caribe Porque lo que empezó como una salida cualquiera,
+                terminó siendo el amor de nuestra vida.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="evento" class="event-details">
+      <h2>Detalles del Evento</h2>
+      <div class="events-grid">
+        <!-- Ceremony -->
+        <div class="event-card">
+          <div class="event-header">
+            <h3>Ceremonia</h3>
+          </div>
+          <div class="event-body">
+            <div class="event-info">
+              <strong>Fecha y Hora</strong>
+              <p>Sábado, 25 de Abril de 2026<br />5:00 PM</p>
+            </div>
+            <div class="event-info">
+              <strong>Lugar</strong>
+              <p>Catedral Basílica de Santa Marta</p>
+            </div>
+            <a
+              href="https://maps.app.goo.gl/USz6mZ5y14xF5JkeA?g_st=iw"
+              class="map-button-event"
+              target="_blank"
+              >Ver en Mapa</a
+            >
+          </div>
+        </div>
+
+        <!-- Reception -->
+        <div class="event-card">
+          <div class="event-header-reception">
+            <h3>Recepción</h3>
+          </div>
+          <div class="event-body">
+            <div class="event-info">
+              <strong>Fecha y Hora</strong>
+              <p>Sábado, 25 de Abril de 2026<br />7:00 PM</p>
+            </div>
+            <div class="event-info">
+              <strong>Lugar</strong>
+              <p>
+                Hotel La Santa<br />Cl. 16 #4-81, Centro Historico, Santa Marta,
+                Magdalena
+              </p>
+            </div>
+            <a
+              href="https://maps.app.goo.gl/bFpwMmk14YL2BPm28"
+              class="map-button-reception"
+              target="_blank"
+              >Ver en Mapa</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section id="alojamiento" class="accommodation dresscode-section">
+
+      <!-- Title (uses your existing section h2 styles) -->
+      <h2>Dress Code</h2>
+
+      <!-- Gender Toggle -->
+      <div class="dc-toggle">
+        <button class="dc-btn active" onclick="dcSwitch('male')">
+          ♂ &nbsp;Masculino
+        </button>
+        <button class="dc-btn" onclick="dcSwitch('female')">
+          ♀ &nbsp;Femenino
+        </button>
+      </div>
+
+      <!-- ═══════════ MASCULINO ═══════════ -->
+      <div class="dc-panel active" id="dc-panel-male">
+        <p class="dc-description">
+          Traje de lino color avena. <br/>
+        </p>
+
+        <div class="dc-carousel-wrapper">
+          <div class="dc-carousel" id="dc-car-male">
+            <!-- Slide 1 — reemplaza src con tu imagen -->
+            <div class="dc-slide active">
+              <img
+                src="./assets/dressCode_masculino/vestido_masc1.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#2c3e50,#4a6274)';
+                  this.style.display = 'none';
+                "
+                alt="Traje oscuro"
+              />
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="dc-slide">
+              <img
+                src="./assets/dressCode_masculino/vestido_masc2.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#1e2d40,#3d5a7a)';
+                  this.style.display = 'none';
+                "
+                alt="Traje azul marino"
+              />
+              <div class="dc-caption">Traje Lino Color Avena</div>
+            </div>
+          </div>
+          <!-- /dc-carousel -->
+
+          <button class="dc-arrow dc-arrow-prev" onclick="dcMove('male', -1)">
+            &#8592;
+          </button>
+          <button class="dc-arrow dc-arrow-next" onclick="dcMove('male', 1)">
+            &#8594;
+          </button>
+        </div>
+        <!-- /wrapper -->
+
+        <div class="dc-dots" id="dc-dots-male">
+          <button class="dc-dot active" onclick="dcGoto('male', 0)"></button>
+          <button class="dc-dot" onclick="dcGoto('male', 1)"></button>
+        </div>
+        <p class="dc-counter" id="dc-count-male">1 / 2</p>
+      </div>
+
+      <!-- ═══════════ FEMENINO ═══════════ -->
+      <div class="dc-panel" id="dc-panel-female">
+        <p class="dc-description">
+          Formal (vestido largo, sin estampados).
+        </p>
+
+        <div class="dc-carousel-wrapper">
+          <div class="dc-carousel" id="dc-car-female">
+            <div class="dc-slide active">
+              <img
+                src="./assets/dreesCode_femenino/vestido_1.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#e8c8b8,#d4956a)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido terracota"
+              />
+            </div>
+
+            <div class="dc-slide">
+              <img
+                src="./assets/dreesCode_femenino/vestido_2.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#c8d8b8,#88b888)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido verde sage"
+              />
+            </div>
+
+            <div class="dc-slide">
+              <img
+                src="./assets/dreesCode_femenino/vestido_3.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#c8b8e8,#9888c8)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido lavanda"
+              />
+            </div>
+
+            <div class="dc-slide">
+              <img
+                src="./assets/dreesCode_femenino/vestido_4.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#e8d0b8,#c8a878)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido nude camel"
+              />
+            </div>
+
+            <div class="dc-slide">
+              <img
+                src="./assets/dreesCode_femenino/vestido_5.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#e8d0b8,#c8a878)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido nude camel"
+              />
+            </div>
+
+            <div class="dc-slide">
+              <img
+                src="./assets/dreesCode_femenino/vestido_6.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#e8d0b8,#c8a878)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido nude camel"
+              />
+            </div>
+
+            <div class="dc-slide">
+              <img
+                src="./assets/dreesCode_femenino/vestido_7.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#e8d0b8,#c8a878)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido nude camel"
+              />
+            </div>
+
+            <div class="dc-slide">
+              <img
+                src="./assets/dreesCode_femenino/vestido_8.png"
+                onerror="
+                  this.parentElement.style.background =
+                    'linear-gradient(135deg,#e8d0b8,#c8a878)';
+                  this.style.display = 'none';
+                "
+                alt="Vestido nude camel"
+              />
+            </div>
+          </div>
+          <!-- /dc-carousel -->
+
+          <button class="dc-arrow dc-arrow-prev" onclick="dcMove('female', -1)">
+            &#8592;
+          </button>
+          <button class="dc-arrow dc-arrow-next" onclick="dcMove('female', 1)">
+            &#8594;
+          </button>
+        </div>
+
+        <div class="dc-dots" id="dc-dots-female">
+          <button class="dc-dot active" onclick="dcGoto('female', 0)"></button>
+          <button class="dc-dot" onclick="dcGoto('female', 1)"></button>
+          <button class="dc-dot" onclick="dcGoto('female', 2)"></button>
+          <button class="dc-dot" onclick="dcGoto('female', 3)"></button>
+          <button class="dc-dot" onclick="dcGoto('female', 4)"></button>
+          <button class="dc-dot" onclick="dcGoto('female', 5)"></button>
+          <button class="dc-dot" onclick="dcGoto('female', 6)"></button>
+          <button class="dc-dot" onclick="dcGoto('female', 7)"></button>
+
+        </div>
+        <p class="dc-counter" id="dc-count-female">1 / 8</p>
+      </div>
+
+      <p class="dc-note">* La elegancia es el mejor accesorio.</p>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp">
+      <h2>Confirma tu Asistencia</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem">
+        Por favor confirma antes del 1 de Marzo de 2026
+      </p>
+      <form class="rsvp-form" id="rsvpForm">
+        <div class="form-group">
+          <label for="nombre">Nombre Completo *</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="asistencia">¿Asistirás? *</label>
+          <select id="asistencia" name="asistencia" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Si, asistiré con alegría">
+              Si, asistiré con alegría
+            </option>
+            <option value="No asistiré">No asistiré</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="invitados">Número de Invitados (incluyéndote) *</label>
+          <select id="invitados" name="invitados" required>
+            <option value="1 cupo">1 cupo</option>
+            <option value="2 cupos">2 cupos</option>
+            <option value="3 cupos">3 cupos</option>
+            <option value="4 cupos">4 cupos</option>
+            <option value="5 cupos">5 cupos</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="restricciones">Restricciones Alimentarias</label>
+          <textarea
+            id="restricciones"
+            name="restricciones"
+            rows="3"
+            placeholder="Vegetariano, vegano, alergias, etc."
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="cancion"
+            >Canción que no puede faltar en la pista 🎵</label
+          >
+          <input
+            type="text"
+            id="cancion"
+            name="cancion"
+            placeholder="Tu canción favorita para bailar"
+          />
+        </div>
+        <div class="form-group">
+          <label for="mensaje">Mensaje para los Novios</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="4"
+            placeholder="Comparte tus buenos deseos..."
+          ></textarea>
+        </div>
+        <button type="submit" class="submit-button">Enviar Confirmación</button>
+      </form>
+    </section>
+
+    <!-- Registry Section -->
+    <section id="registro" class="registry">
+      <h2>Mesa de Regalos</h2>
+      <div class="registry-content">
+        <p>
+          Su presencia es nuestro mejor regalo, pero si desean tener un detalle
+          con nosotros, hemos creado las siguientes opciones:
+        </p>
+
+        <div class="gift-options">
+          <div class="gift-card">
+            <h3>🏠 Liverpool</h3>
+            <p style="color: #555; margin: 1rem 0">
+              Mesa de regalos para nuestro nuevo hogar
+            </p>
+            <p style="font-weight: 600; color: var(--primary)">
+              Evento: 12345678
+            </p>
+          </div>
+
+          <div class="gift-card">
+            <h3>✈️ Luna de Miel</h3>
+            <p style="color: #555; margin: 1rem 0">
+              Contribución para nuestra luna de miel en Europa
+            </p>
+            <p style="font-weight: 600; color: var(--primary)">
+              Transferencia disponible
+            </p>
+          </div>
+        </div>
+
+        <p style="margin-top: 2rem; font-style: italic; color: #555">
+          Para más detalles sobre transferencias, por favor contáctanos
+          directamente.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <section class="gallery">
+      <h2>Nuestros Momentos</h2>
+      <div class="photo-grid">
+        <div class="photo-placeholder">📷</div>
+        <div class="photo-placeholder">💑</div>
+        <div class="photo-placeholder">🌅</div>
+        <div class="photo-placeholder">❤️</div>
+        <div class="photo-placeholder">🏖️</div>
+        <div class="photo-placeholder">🎉</div>
+      </div>
+      <p
+        style="
+          text-align: center;
+          margin-top: 2rem;
+          color: #777;
+          font-style: italic;
+        "
+      >
+        Pronto compartiremos más fotos de nuestra historia juntos
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>No podemos esperar para celebrar con ustedes</p>
+      <p>Isa & Julio</p>
+      <p class="hashtag">#DaaL</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
