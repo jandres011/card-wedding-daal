@@ -164,14 +164,6 @@ function dcStartTimer(gender) {
   dcStartTimer(g);
 });
 
-
-// Música
-document.addEventListener("click", function () {
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.2;
-  music.play();
-}, { once: true });
-
 // Video 
 
 const video = document.getElementById("daal-video");
@@ -198,6 +190,7 @@ const bgMusic = document.getElementById("bgMusic");
 
 musicBtn.addEventListener("click", () => {
   if (bgMusic.paused) {
+    bgMusic.volume = 0.2;
     bgMusic.play();
     musicBtn.textContent = "❚❚";
   } else {
