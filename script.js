@@ -1,3 +1,22 @@
+// Hero responsive
+const btn  = document.getElementById('menuBtn');
+  const list = document.getElementById('menuList');
+
+  btn.addEventListener('click', () => {
+    const isOpen = list.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu when a link is clicked
+  list.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      list.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', false);
+    });
+  });
+
 const weddingDate = new Date("April 25, 2026 16:00:00").getTime();
 
 function updateCountdown() {
@@ -11,7 +30,7 @@ function updateCountdown() {
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById("days").textContent = String(days).padStart(3, "0");
+  document.getElementById("days").textContent = String(days).padStart(2, "0");
   document.getElementById("hours").textContent = String(hours).padStart(2, "0");
   document.getElementById("minutes").textContent = String(minutes).padStart(
     2,
@@ -54,6 +73,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
+// Formulario de confirmación
+
 document.getElementById("rsvpForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -87,6 +108,9 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
   alert("¡Gracias por confirmar! Nos vemos en la boda.");
   document.getElementById("rsvpForm").reset();
 });
+
+
+// Section Dress Code
 
 const dcState = {
   male: { cur: 0, total: 2, timer: null, paused: false },
@@ -129,7 +153,7 @@ function dcMove(gender, dir) {
 function dcStartTimer(gender) {
   dcState[gender].timer = setInterval(() => {
     if (!dcState[gender].paused) dcMove(gender, 1);
-  }, 2000);
+  }, 4000);
 }
 
 // Pause on hover
@@ -144,5 +168,40 @@ function dcStartTimer(gender) {
 // Música
 document.addEventListener("click", function () {
   const music = document.getElementById("bgMusic");
+  music.volume = 0.2;
   music.play();
 }, { once: true });
+
+// Video 
+
+const video = document.getElementById("daal-video");
+const section = document.getElementById("section-daal");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  },
+  { threshold: 0.6 } // se activa cuando 60% está visible
+);
+
+observer.observe(section);
+
+// Botón de música
+const musicBtn = document.getElementById("musicBtn");
+const bgMusic = document.getElementById("bgMusic");
+
+musicBtn.addEventListener("click", () => {
+  if (bgMusic.paused) {
+    bgMusic.play();
+    musicBtn.textContent = "❚❚";
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = "▶";
+  }
+});

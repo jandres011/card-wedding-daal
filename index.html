@@ -15,17 +15,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <audio id="bgMusic" loop>
       <source src="./assets/salguero.mp3" type="audio/mpeg" />
     </audio>
+
+    <button id="musicBtn" class="music-btn">
+      ▶
+    </button>
     <!-- Navigation -->
+
     <nav>
-      <ul>
+      <!-- Mobile wrapper -->
+      <div class="nav-inner">
+        <button
+        class="hamburger"
+        id="menuBtn"
+        aria-label="Menú"
+        aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Links (visible on desktop, toggled on mobile) -->
+      <ul id="menuList">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#historia">Nuestra Historia</a></li>
         <li><a href="#evento">El Evento</a></li>
-        <li><a href="#alojamiento">Alojamiento</a></li>
+        <li><a href="#dresscode">Dress Code</a></li>
         <li><a href="#rsvp">Confirmar</a></li>
         <li><a href="#registro">Regalos</a></li>
       </ul>
@@ -47,7 +66,7 @@
             <img
               src="https://cf-templates-1gclp1pz85mda-us-east-1.s3.us-east-1.amazonaws.com/Recurso+5.png"
               alt="DAAL"
-              style="width: 80%; height: 100%"
+              style="width: 100%; height: 100%"
             />
           </div>
         </h1>
@@ -84,31 +103,41 @@
       <h2>Nuestra Historia</h2>
       <div class="story-content">
         <p>
-          Nos conocimos por casualidad, gracias a amigos en común. La verdad,
-          apenas lo vi no le presté mucha atención, pero Julio sí; desde el
-          primer momento me “tiró el ojo”.
+          Nos conocimos por casualidad, gracias a amigos en común. Isa no
+          sospechaba que ese día conocería al amor de su vida; Julio, en cambio,
+          lo tuvo claro desde el primer momento. Mientras ella apenas lo miraba,
+          él ya estaba completamente interesado.
         </p>
         <p>
-          Ese día fuimos con nuestros amigos a Playa Salguero a tomarnos algo y
-          conversar frente al mar. Fue un plan sencillo, pero muy chévere. Julio
-          casi no me hablaba… hasta que estuvo un poquito tomado y decidió
-          preguntarme cómo me llamaba e iniciar la conversación.
+          Ese día fuimos con nuestros amigos a Playa Salguero a tomar algo y
+          conversar frente al mar. Un plan sencillo, de esos que parecen uno
+          más. pero que terminan cambiándolo todo. Al principio casi no
+          hablábamos entre nosotros, hasta que Julio, reuniendo valor (y con un
+          pequeño empujón de confianza), decidió preguntarle su nombre a Isa. Y
+          así, sin grandes discursos, empezó nuestra historia.
         </p>
         <p>
-          Desde ahí comenzamos a hablar y a conectar. Más tarde nos fuimos a una
-          discoteca; bailamos, reímos y fue justo allí donde Julio me robó un
-          beso. Entre música, risas y miradas cómplices, intercambiamos números.
-          Yo, sinceramente, pensé que nunca volveríamos a hablar.
+          Después llegaron las risas, las conversaciones que fluían sin esfuerzo
+          y esa conexión que no se puede explicar, pero sí sentir. Más tarde
+          terminamos en una discoteca; bailamos, cantamos y, entre miradas
+          cómplices, llegó nuestro primer beso. Intercambiamos números pensando
+          que tal vez sería solo un recuerdo bonito de una noche divertida.
         </p>
         <p>
-          Pero al día siguiente apareció. Me invitó a otro plan y, sin darme
-          cuenta, empezamos a escribir nuestra historia.
+          Pero al día siguiente volvimos a buscarnos. Un mensaje llevó a otro,
+          un plan llevó a otro, y sin darnos cuenta empezamos a compartir mucho
+          más que salidas: compartimos tiempo, sueños, metas y el deseo de estar
+          siempre juntos.
         </p>
         <p>
-          Desde entonces no nos separamos. Lo que comenzó como una salida casual
-          entre amigos se convirtió en el amor más bonito, en planes juntos, en
-          sueños compartidos y en una vida que decidimos construir de la mano.
+          Lo que comenzó como una salida casual entre amigos se convirtió en
+          nuestro lugar seguro, en nuestra alegría diaria y en la certeza de que
+          queremos caminar la vida de la mano. Y ahora, frente a todos los que
+          queremos, damos el siguiente paso: celebrar nuestro amor y comenzar
+          oficialmente la historia de <strong>#DAAL</strong>, la unión de
+          Dangond y Alcázar.
         </p>
+
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-content">
@@ -121,16 +150,28 @@
               </p>
             </div>
             <div class="timeline-dot"></div>
+        </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Nuestro “sí” como novios</h3>
+              <span class="timeline-date">Diciembre 2016</span>
+              <p>
+                Lo que empezó como una historia inesperada se volvió oficial. 
+                Entre detalles, nervios y mucha ilusión, decidimos que queríamos intentarlo en serio 
+                y desde ese día empezamos a llamarnos novios.
+              </p>
+            </div>
+            <div class="timeline-dot"></div>
           </div>
 
           <div class="timeline-item">
             <div class="timeline-content">
-              <h3>La propuesta</h3>
-              <span class="timeline-date">Marzo 2024</span>
+              <h3>Nuestro primer viaje internacional</h3>
+              <span class="timeline-date">Julio 2018</span>
               <p>
-                Orlando, Florida en Walt Disney World Un día mágico, lleno de
-                adrenalina, sorpresas y un “¿te quieres casar conmigo?” que me
-                dejó sin palabras. Literal, nuestro propio cuento de hadas.
+                Nuestro primer sello en el pasaporte juntos. 
+                Descubrimos que viajar de la mano es aún mejor, 
+                que somos el mejor equipo y que el mundo se siente más pequeño cuando estamos juntos.
               </p>
             </div>
             <div class="timeline-dot"></div>
@@ -216,12 +257,30 @@
             >
           </div>
         </div>
-      </div>
+
+        <div class="event-card">
+          <div class="event-header-sobres">
+            <div class="env-rain">
+              <span>✉️</span>
+              <span>💌</span>
+              <span>✉️</span>
+              <span>💌</span>
+              <span>✉️</span>
+              <span>💌</span>
+            </div>
+            <h3>Lluvia de Sobres</h3>
+          </div>
+
+          <div class="event-body">
+            <div class="event-info">
+              <p>Agradecemos profundamente su compañía en este día tan especial. La lluvia de sobres será recibida con cariño y gratitud como apoyo al inicio de esta nueva etapa de nuestras vidas.</p>
+            </div>
+          </div>
+        </div>
     </section>
 
     <!-- Accommodation Section -->
-    <section id="alojamiento" class="accommodation dresscode-section">
-
+    <section id="dresscode" class="accommodation dresscode-section">
       <!-- Title (uses your existing section h2 styles) -->
       <h2>Dress Code</h2>
 
@@ -237,9 +296,7 @@
 
       <!-- ═══════════ MASCULINO ═══════════ -->
       <div class="dc-panel active" id="dc-panel-male">
-        <p class="dc-description">
-          Traje de lino color avena. <br/>
-        </p>
+        <p class="dc-description">Traje de lino color avena. <br /></p>
 
         <div class="dc-carousel-wrapper">
           <div class="dc-carousel" id="dc-car-male">
@@ -290,9 +347,7 @@
 
       <!-- ═══════════ FEMENINO ═══════════ -->
       <div class="dc-panel" id="dc-panel-female">
-        <p class="dc-description">
-          Formal (vestido largo, sin estampados).
-        </p>
+        <p class="dc-description">Formal (vestido largo, sin estampados).</p>
 
         <div class="dc-carousel-wrapper">
           <div class="dc-carousel" id="dc-car-female">
@@ -411,7 +466,6 @@
           <button class="dc-dot" onclick="dcGoto('female', 5)"></button>
           <button class="dc-dot" onclick="dcGoto('female', 6)"></button>
           <button class="dc-dot" onclick="dcGoto('female', 7)"></button>
-
         </div>
         <p class="dc-counter" id="dc-count-female">1 / 8</p>
       </div>
@@ -488,71 +542,119 @@
     </section>
 
     <!-- Registry Section -->
-    <section id="registro" class="registry">
-      <h2>Mesa de Regalos</h2>
-      <div class="registry-content">
-        <p>
-          Su presencia es nuestro mejor regalo, pero si desean tener un detalle
-          con nosotros, hemos creado las siguientes opciones:
-        </p>
-
-        <div class="gift-options">
-          <div class="gift-card">
-            <h3>🏠 Liverpool</h3>
-            <p style="color: #555; margin: 1rem 0">
-              Mesa de regalos para nuestro nuevo hogar
-            </p>
-            <p style="font-weight: 600; color: var(--primary)">
-              Evento: 12345678
-            </p>
-          </div>
-
-          <div class="gift-card">
-            <h3>✈️ Luna de Miel</h3>
-            <p style="color: #555; margin: 1rem 0">
-              Contribución para nuestra luna de miel en Europa
-            </p>
-            <p style="font-weight: 600; color: var(--primary)">
-              Transferencia disponible
-            </p>
-          </div>
+    <section id="recomendados" class="registry">
+      <h2>Recomendados</h2>
+      <div class="events-grid">
+        <div class="event-card">
+            <div class="event-header-reception rec-alquiler">
+              <h3>Alquiler de trajes</h3>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <strong>Noche de etiquetas</strong>
+                <p>Calle 21 #2A-60<br /> 3007060268</p>
+              </div>
+              <div class="event-info">
+                <strong>Diana Pardo</strong>
+                <p>Calle 22 #6-82 Local 22<br /> 3007099601</p>
+              </div>
+            </div>
         </div>
-
-        <p style="margin-top: 2rem; font-style: italic; color: #555">
-          Para más detalles sobre transferencias, por favor contáctanos
-          directamente.
-        </p>
+        <div class="event-card">
+            <div class="event-header-reception rec-maquillaje">
+              <h3>Maquillaje</h3>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <strong>Andrea Otera</strong>
+                <p>3007288658</p>
+              </div>
+              <div class="event-info">
+                <strong>Lugar</strong>
+                <p>
+                  Hotel La Santa<br />Cl. 16 #4-81, Centro Historico, Santa Marta,
+                  Magdalena
+                </p>
+              </div>
+              <a
+                href="https://www.instagram.com/andreaoteromakeup_?igsh=MTJtbGxyczFrMXpodA=="
+                class="map-button-reception"
+                target="_blank"
+                ><img src="./assets/instagram.svg" alt="Instagram" width="20" height="20"></a
+              >
+            </div>
+          </div>
+          <div class="event-card">
+            <div class="event-header-reception rec-barberos">
+              <h3>Barberos</h3>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <strong>Ángel Gomez</strong>
+                <p>3007060268</p>
+              </div>
+              <div class="event-info">
+                <strong>Lugar</strong>
+                <p>
+                  Hotel La Santa<br />Cl. 16 #4-81, Centro Historico, Santa Marta,
+                  Magdalena
+                </p>
+              </div>
+              <a
+                href="https://www.instagram.com/angelgomezgo?igsh=MWc2enMya2lwd3VuNg=="
+                class="map-button-reception"
+                target="_blank"
+                ><img src="./assets/instagram.svg" alt="Instagram" width="20" height="20"></a
+              >
+              <a
+                href="https://wa.me/573023917016"
+                class="map-button-reception"
+                target="_blank"
+                ><img src="./assets/whatsapp.svg" alt="Instagram" width="20" height="20"></a
+              >
+            </div>
+          </div>
+          <div class="event-card">
+            <div class="event-header-reception rec-peluqueria">
+              <h3>Peluquería</h3>
+            </div>
+            <div class="event-body">
+              <div class="event-info">
+                <strong>Salón de Belleza</strong>
+                <p>Calle 24A# 2A-152 - 3024345349</p>
+              </div>
+              <a
+                href="https://www.instagram.com/hrpeluqueriaspa?igsh=cmUzdGhvZmNpdGw4"
+                class="map-button-reception"
+                target="_blank"
+                ><img src="./assets/instagram.svg" alt="Instagram" width="20" height="20"></a
+              >
+            </div>
+          </div>
       </div>
+        
     </section>
 
     <!-- Gallery Preview -->
-    <section class="gallery">
-      <h2>Nuestros Momentos</h2>
-      <div class="photo-grid">
-        <div class="photo-placeholder">📷</div>
-        <div class="photo-placeholder">💑</div>
-        <div class="photo-placeholder">🌅</div>
-        <div class="photo-placeholder">❤️</div>
-        <div class="photo-placeholder">🏖️</div>
-        <div class="photo-placeholder">🎉</div>
+    <section class="hero-video" id="section-daal">
+      <video class="bg-video" autoplay muted loop playsinline>
+        <source src="./assets/video.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-content">
+        <h2>Nuestra historia</h2>
+        <div class="divider"></div>
       </div>
-      <p
-        style="
-          text-align: center;
-          margin-top: 2rem;
-          color: #777;
-          font-style: italic;
-        "
-      >
-        Pronto compartiremos más fotos de nuestra historia juntos
-      </p>
     </section>
 
     <!-- Footer -->
     <footer>
       <p>No podemos esperar para celebrar con ustedes</p>
-      <p>Isa & Julio</p>
-      <p class="hashtag">#DaaL</p>
+      <img
+              src="https://cf-templates-1gclp1pz85mda-us-east-1.s3.us-east-1.amazonaws.com/Recurso+5.png"
+              alt="DAAL"
+              style="width: 100px; height: 100px"
+            />
     </footer>
     <script src="script.js"></script>
   </body>
