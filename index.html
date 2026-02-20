@@ -22,6 +22,16 @@
     <button id="musicBtn" class="music-btn">
       ▶
     </button>
+
+    <canvas id="confetti-canvas" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+    "></canvas>
     <!-- Navigation -->
 
     <nav>
@@ -511,7 +521,7 @@
             <option value="No asistiré">No asistiré</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="campo-invitados">
           <label for="invitados">Número de Invitados (incluyéndote) *</label>
           <select id="invitados" name="invitados" required>
             <option value="1 cupo">1 cupo</option>
@@ -521,7 +531,7 @@
             <option value="5 cupos">5 cupos</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="campo-restricciones">
           <label for="restricciones">Restricciones Alimentarias</label>
           <textarea
             id="restricciones"
@@ -530,9 +540,9 @@
             placeholder="Vegetariano, vegano, alergias, etc."
           ></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="campo-cancion">
           <label for="cancion"
-            >Canción que no puede faltar en la pista 🎵</label
+            >Canción que no puede faltar en la pista</label
           >
           <input
             type="text"
@@ -541,7 +551,7 @@
             placeholder="Tu canción favorita para bailar"
           />
         </div>
-        <div class="form-group">
+        <div class="form-group" id="campo-mensaje">
           <label for="mensaje">Mensaje para los Novios</label>
           <textarea
             id="mensaje"
@@ -662,7 +672,7 @@
 
     <!-- Gallery Preview -->
     <section class="hero-video" id="section-daal">
-      <video class="bg-video" autoplay muted loop playsinline>
+      <video class="bg-video" id="daal-video" autoplay muted loop playsinline>
         <source src="./assets/video.mp4" type="video/mp4">
       </video>
 
@@ -681,6 +691,8 @@
               style="width: 100px; height: 100px"
             />
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
