@@ -262,7 +262,7 @@ nav.theme-video .hamburger span { background: #F7F3ED; }
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('./assets/fondo-hero.png') center/cover;
+        url('./assets/fondo-hero.jpg') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
