@@ -113,33 +113,23 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
 // Section Dress Code
 
 const dcState = {
-  male: { cur: 0, total: 2, timer: null, paused: false },
+  male:   { cur: 0, total: 2, timer: null, paused: false },
   female: { cur: 0, total: 8, timer: null, paused: false },
 };
 
 let dcActive = "male";
 
-function dcSwitch(gender) {
-  dcActive = gender;
-  document.querySelectorAll(".dc-btn").forEach((b, i) => {
-    b.classList.toggle(
-      "active",
-      (i === 0 && gender === "male") || (i === 1 && gender === "female"),
-    );
-  });
-  document
-    .querySelectorAll(".dc-panel")
-    .forEach((p) => p.classList.remove("active"));
-  document.getElementById("dc-panel-" + gender).classList.add("active");
-}
-
+/* ── Goto / Move ── */
 function dcGoto(gender, idx) {
-  const s = dcState[gender];
-  const slides = document.querySelectorAll("#dc-car-" + gender + " .dc-slide");
-  const dots = document.querySelectorAll("#dc-dots-" + gender + " .dc-dot");
+  const s     = dcState[gender];
+  const slides = document.querySelectorAll("#dc-car-"  + gender + " .dc-slide");
+  const dots   = document.querySelectorAll("#dc-dots-" + gender + " .dc-dot");
+
   slides[s.cur].classList.remove("active");
   dots[s.cur].classList.remove("active");
+
   s.cur = (idx + s.total) % s.total;
+
   slides[s.cur].classList.add("active");
   dots[s.cur].classList.add("active");
   document.getElementById("dc-count-" + gender).textContent =
@@ -150,19 +140,72 @@ function dcMove(gender, dir) {
   dcGoto(gender, dcState[gender].cur + dir);
 }
 
+/* ── Timer helpers ── */
+function dcStopTimer(gender) {
+  clearInterval(dcState[gender].timer);
+  dcState[gender].timer = null;
+}
+
 function dcStartTimer(gender) {
+  dcStopTimer(gender);                          // avoid duplicate intervals
   dcState[gender].timer = setInterval(() => {
     if (!dcState[gender].paused) dcMove(gender, 1);
   }, 4000);
 }
 
-// Pause on hover
-["male", "female"].forEach((g) => {
+function dcResetAndStart(gender) {
+  dcGoto(gender, 0);                            // jump to first slide
+  dcStartTimer(gender);
+}
+
+/* ── Gender switch ── */
+function dcSwitch(gender) {
+  dcActive = gender;
+
+  document.querySelectorAll(".dc-btn").forEach((b, i) => {
+    b.classList.toggle(
+      "active",
+      (i === 0 && gender === "male") || (i === 1 && gender === "female")
+    );
+  });
+
+  document.querySelectorAll(".dc-panel")
+    .forEach(p => p.classList.remove("active"));
+  document.getElementById("dc-panel-" + gender).classList.add("active");
+
+  // Stop the OTHER gender's timer and reset+start this one
+  const other = gender === "male" ? "female" : "male";
+  dcStopTimer(other);
+  dcResetAndStart(gender);
+}
+
+/* ── Pause on hover ── */
+["male", "female"].forEach(g => {
   const car = document.getElementById("dc-car-" + g);
   car.addEventListener("mouseenter", () => (dcState[g].paused = true));
   car.addEventListener("mouseleave", () => (dcState[g].paused = false));
-  dcStartTimer(g);
 });
+
+/* ── Start timers only when section scrolls into view ── */
+const dcSection = document.getElementById("dresscode");
+
+const dcObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Section visible → start only the active panel's timer
+        dcResetAndStart(dcActive);
+      } else {
+        // Section left viewport → stop both timers to save resources
+        dcStopTimer("male");
+        dcStopTimer("female");
+      }
+    });
+  },
+  { threshold: 0.25 }   // fires when 25 % of the section is visible
+);
+
+dcObserver.observe(dcSection);
 
 // Video 
 
