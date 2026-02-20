@@ -262,7 +262,7 @@ nav.theme-video .hamburger span { background: #F7F3ED; }
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('https://daal-bucket.s3.us-east-2.amazonaws.com/assets/fondo-hero.png') center/cover;
+        url('./assets/fondo-hero.png') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -525,7 +525,7 @@ section h2::after {
     color: var(--white);
     padding: 2.5rem 2rem;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.421)), url("https://daal-bucket.s3.us-east-2.amazonaws.com/assets/catedral.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.421)), url("./assets/catedral.jpeg");
     background-size: cover;
     background-position: center;
 }
@@ -535,7 +535,7 @@ section h2::after {
     color: var(--white);
     padding: 2.5rem 2rem;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.421)), url("https://daal-bucket.s3.us-east-2.amazonaws.com/assets/la_santa.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.421)), url("./assets/la_santa.jpeg");
     background-size: cover;
     background-position: center;
 }
@@ -590,7 +590,7 @@ section h2::after {
     text-align: center;
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.50)),
-        url("https://daal-bucket.s3.us-east-2.amazonaws.com/assets/fondo_lluvia.png");
+        url("./assets/fondo_lluvia.png");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -1255,19 +1255,19 @@ footer p {
 }
 
 .rec-alquiler {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://daal-bucket.s3.us-east-2.amazonaws.com/assets/alquiler-trajes.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./assets/alquiler-trajes.png");
 }
 
 .rec-maquillaje {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://daal-bucket.s3.us-east-2.amazonaws.com/assets/maquillaje.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./assets/maquillaje.png");
 }
 
 .rec-barberos {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://daal-bucket.s3.us-east-2.amazonaws.com/assets/barberia.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./assets/barberia.png");
 }
 
 .rec-peluqueria {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://daal-bucket.s3.us-east-2.amazonaws.com/assets/peluqueria.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("./assets/peluqueria.png");
 }
 
 
