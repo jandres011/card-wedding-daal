@@ -198,3 +198,71 @@ musicBtn.addEventListener("click", () => {
     musicBtn.textContent = "▶";
   }
 });
+
+//Nav
+// ── NAV ADAPTIVE THEME ──
+(function () {
+    const nav = document.querySelector('nav');
+
+    const sectionThemes = [
+        { selector: '#inicio',             theme: 'theme-inicio' },
+        { selector: '.countdown-section',  theme: 'theme-countdown' },
+        { selector: '#historia',           theme: 'theme-historia' },
+        { selector: '#evento',             theme: 'theme-evento' },
+        { selector: '#dresscode',          theme: 'theme-dresscode' },
+        { selector: '#rsvp',              theme: 'theme-rsvp' },
+        { selector: '#recomendados',       theme: 'theme-recomendados' },
+        { selector: '#section-daal',       theme: 'theme-video' },
+    ];
+
+    const allThemes = sectionThemes.map(s => s.theme);
+
+    function setTheme(theme) {
+        nav.classList.remove(...allThemes);
+        if (theme) nav.classList.add(theme);
+    }
+
+    const visibleMap = new Map();
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                const match = sectionThemes.find(s => entry.target.matches(s.selector));
+                if (!match) return;
+                if (entry.isIntersecting) {
+                    visibleMap.set(entry.target, match.theme);
+                } else {
+                    visibleMap.delete(entry.target);
+                }
+            });
+
+            if (visibleMap.size === 0) return;
+
+            let bestTheme = null;
+            let minDist = Infinity;
+            visibleMap.forEach((theme, el) => {
+                const top = el.getBoundingClientRect().top;
+                const dist = Math.abs(top);
+                if (dist < minDist) {
+                    minDist = dist;
+                    bestTheme = theme;
+                }
+            });
+
+            if (bestTheme) setTheme(bestTheme);
+        },
+        {
+            threshold: 0,
+            rootMargin: '-60px 0px -55% 0px'
+        }
+    );
+
+    sectionThemes.forEach(({ selector }) => {
+        const el = document.querySelector(selector);
+        if (el) observer.observe(el);
+    });
+
+    setTheme('theme-inicio');
+})();
+
+

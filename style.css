@@ -26,14 +26,16 @@ body {
 }
 
 /* Navigation */
-/* ─── NAV BASE ─── */
 nav {
-    background: #fff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
     position: sticky;
     top: 0;
     z-index: 100;
     padding: 0 32px;
+    /* Transición suave entre temas */
+    transition: background 0.45s ease, box-shadow 0.45s ease;
+    /* Default: blanco */
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
 }
 
 nav ul {
@@ -43,6 +45,8 @@ nav ul {
     justify-content: center;
     gap: 0;
     height: 60px;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
@@ -53,22 +57,21 @@ nav ul li a {
     font-weight: 600;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: var(--dark);
     text-decoration: none;
     line-height: 60px;
-    transition: color 0.2s;
     white-space: nowrap;
+    /* La transición de color va aquí */
+    transition: color 0.4s ease;
+    color: #1A1A1A; /* default */
 }
 
 nav ul li a:hover {
-    color: var(--dark);
+    opacity: 0.7;
 }
 
-.nav-logo {
-    display: none;
-}
+.nav-logo { display: none; }
 
-/* ─── HAMBURGER BUTTON ─── */
+/* ── Hamburger ── */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -83,42 +86,101 @@ nav ul li a:hover {
     border-radius: 8px;
     transition: background 0.2s;
 }
-
-.hamburger:hover {
-    background: white;
-}
-
+.hamburger:hover { background: rgba(0,0,0,0.05); }
 .hamburger span {
     display: block;
     width: 100%;
     height: 1.5px;
-    background: var(--dark);
     border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.4s ease;
     transform-origin: center;
+    background: #1A1A1A; /* default */
 }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* ─── HAMBURGER → X animation ─── */
-.hamburger.open span:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
+/* ══════════════════════════════════════
+   TEMAS POR SECCIÓN
+   ══════════════════════════════════════ */
+
+/* Hero (inicio) — blanco */
+nav.theme-inicio {
+    background: rgba(255,255,255,0.97);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
+nav.theme-inicio ul li a,
+nav.theme-inicio .hamburger span { color: #1A1A1A; }
+nav.theme-inicio .hamburger span { background: #1A1A1A; }
 
-.hamburger.open span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
+/* Countdown — arena */
+nav.theme-countdown {
+    background: #F7F3ED;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+nav.theme-countdown ul li a { color: #1A1A1A; }
+nav.theme-countdown .hamburger span { background: #1A1A1A; }
 
-.hamburger.open span:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
+/* Historia — blanco */
+nav.theme-historia {
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
+nav.theme-historia ul li a { color: #1A1A1A; }
+nav.theme-historia .hamburger span { background: #1A1A1A; }
 
-/* ─── MOBILE ─── */
+/* Evento — arena */
+nav.theme-evento {
+    background: #F7F3ED;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+nav.theme-evento ul li a { color: #1A1A1A; }
+nav.theme-evento .hamburger span { background: #1A1A1A; }
+
+/* Dress Code — blanco */
+nav.theme-dresscode {
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+nav.theme-dresscode ul li a { color: #1A1A1A; }
+nav.theme-dresscode .hamburger span { background: #1A1A1A; }
+
+/* RSVP — negro */
+nav.theme-rsvp {
+    background: #1A1A1A;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+nav.theme-rsvp ul li a { color: #F7F3ED; }
+nav.theme-rsvp ul li a:hover { color: #D4A574; opacity: 1; }
+nav.theme-rsvp .hamburger span { background: #F7F3ED; }
+
+/* Recomendados — arena */
+nav.theme-recomendados {
+    background: #F7F3ED;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+nav.theme-recomendados ul li a { color: #1A1A1A; }
+nav.theme-recomendados .hamburger span { background: #1A1A1A; }
+
+/* Video — negro con blur */
+nav.theme-video {
+    background: rgba(26,26,26,0.88);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+nav.theme-video ul li a { color: #F7F3ED; }
+nav.theme-video ul li a:hover { color: #D4A574; opacity: 1; }
+nav.theme-video .hamburger span { background: #F7F3ED; }
+
+/* ══════════════════════════════════════
+   MÓVIL
+   ══════════════════════════════════════ */
 @media (max-width: 700px) {
     nav {
         padding: 0 20px;
     }
 
-    /* wrapper to position hamburger */
     nav .nav-inner {
         display: flex;
         align-items: center;
@@ -131,13 +193,11 @@ nav ul li a:hover {
         font-family: 'Cormorant Garamond', serif;
         font-style: italic;
         font-size: 1.1rem;
-        color: var(--dark);
         letter-spacing: 0.06em;
+        color: inherit;
     }
 
-    .hamburger {
-        display: flex;
-    }
+    .hamburger { display: flex; }
 
     nav ul {
         display: none;
@@ -145,8 +205,29 @@ nav ul li a:hover {
         height: auto;
         gap: 0;
         padding: 8px 0 16px;
-        border-top: 1px solid #ede5d8;
+        border-top: 1px solid rgba(0,0,0,0.08);
+        /* El fondo del dropdown hereda del nav para que coincida */
+        background: inherit;
     }
+
+    /* Borde superior claro en temas oscuros */
+    nav.theme-rsvp ul,
+    nav.theme-video ul {
+        border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    nav.theme-inicio {
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.979) 0%,
+            rgba(25, 15, 8, 0.759) 60%,
+            rgba(0, 0, 0, 0.9) 100%
+        );
+        border-bottom: 1px solid rgba(180,130,60,0.2);
+    }
+    nav.theme-inicio ul li a,
+    nav.theme-inicio .hamburger span { color: #F7F3ED; }
+    nav.theme-inicio .hamburger span { background: #F7F3ED; }
 
     nav ul.open {
         display: flex;
@@ -154,32 +235,27 @@ nav ul li a:hover {
     }
 
     @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-8px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 
-    nav ul li {
-        width: 100%;
-    }
+    nav ul li { width: 100%; }
 
     nav ul li a {
         line-height: 1;
         padding: 13px 4px;
         font-size: 0.82rem;
-        border-bottom: 1px solid #f0e9df;
+        border-bottom: 1px solid rgba(0,0,0,0.07);
         display: block;
     }
 
-    nav ul li:last-child a {
-        border-bottom: none;
+    /* Separadores claros en temas oscuros */
+    nav.theme-rsvp ul li a,
+    nav.theme-video ul li a {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+
+    nav ul li:last-child a { border-bottom: none; }
 }
 
 /* Hero Section */
