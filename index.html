@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daal - Nuestra Boda en Santa Marta</title>
+    <link 
+      rel="preload" 
+      as="image" 
+      href="https://daal-bucket.s3.us-east-2.amazonaws.com/assets/fondo-hero.jpg"
+      fetchpriority="high"
+    >
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
       rel="stylesheet"
@@ -190,7 +196,7 @@
 
           <div class="timeline-item">
             <div class="timeline-content">
-              <h3>La propuesta</h3>
+              <h3>La Propuesta</h3>
               <span class="timeline-date">Marzo 2024</span>
               <p>
                 Orlando, Florida en Walt Disney World 
@@ -215,7 +221,7 @@
 
           <div class="timeline-item">
             <div class="timeline-content">
-              <h3>¡Nuestra boda!</h3>
+              <h3>¡Nuestra Boda!</h3>
               <span class="timeline-date">Abril 2026</span>
               <p>
                 Celebraremos nuestro amor rodeados de familia, amigos y la magia
@@ -561,7 +567,7 @@
             placeholder="Comparte tus buenos deseos..."
           ></textarea>
         </div>
-        <button type="submit" class="submit-button">Enviar Confirmación</button>
+        <button type="submit" class="submit-button" id="submit-button">Enviar Confirmación</button>
       </form>
     </section>
 
@@ -662,11 +668,6 @@
       <video class="bg-video" id="daal-video" autoplay muted loop playsinline>
         <source src="https://daal-bucket.s3.us-east-2.amazonaws.com/assets/video.mp4" type="video/mp4">
       </video>
-
-      <div class="hero-content">
-        <h2>Nuestra historia</h2>
-        <div class="divider"></div>
-      </div>
     </section>
 
     <!-- Footer -->
@@ -680,6 +681,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
   </body>
 </html>

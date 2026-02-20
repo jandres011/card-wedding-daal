@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daal · Invitación Privada</title>
+  <link rel="icon" type="image/x-icon" href="/assets/Recurso-2.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:       #F7F3ED;
+      --white:      #FFFFFF;
+      --dark:       #1A1A1A;
+      --light-gray: #F5F5F5;
+      --gold:       #B8956A;
+      --gold2:      #8A6840;
+      --gold3:      #D4AA78;
+      --gold-soft:  #E8D5B8;
+      --muted:      #7A6A54;
+      --muted2:     #A89880;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ════════════════════════════════════════
+       CANVAS — petals & particles
+    ════════════════════════════════════════ */
+    #canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ════════════════════════════════════════
+       BACKGROUND gradient layers
+    ════════════════════════════════════════ */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 55% at 50% -5%,  rgba(184,149,106,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 5%  95%,  rgba(184,149,106,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 50% at 95% 45%,  rgba(212,170,120,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 40% at 50% 100%, rgba(232,213,184,0.20) 0%, transparent 50%),
+        linear-gradient(175deg, #F7F3ED 0%, #F0EAE0 50%, #F7F3ED 100%);
+    }
+
+    /* Grain overlay */
+    .grain {
+      position: fixed;
+      inset: -50%;
+      width: 200%; height: 200%;
+      z-index: 1;
+      opacity: 0.025;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 150px;
+      animation: grainMove 8s steps(2) infinite;
+    }
+    @keyframes grainMove {
+      0%   { transform: translate(0,0); }
+      25%  { transform: translate(-2%, -3%); }
+      50%  { transform: translate(3%, 1%); }
+      75%  { transform: translate(-1%, 4%); }
+      100% { transform: translate(2%, -2%); }
+    }
+
+    /* ════════════════════════════════════════
+       MAIN CONTENT
+    ════════════════════════════════════════ */
+    .scene {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 28px;
+      max-width: 560px;
+    }
+
+    /* ── Ornament top ── */
+    .ornament-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: revealFade 1s ease 0.2s both;
+    }
+    .orn-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .orn-line.right {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+    .orn-diamond {
+      font-size: 10px;
+      color: var(--gold2);
+      letter-spacing: 0.4em;
+      opacity: 0.7;
+    }
+
+    /* ── Monogram ── */
+    .monogram-wrap {
+      position: relative;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: revealScale 1.2s cubic-bezier(0.16,1,0.3,1) 0.4s both;
+    }
+
+    .monogram-ring {
+      position: absolute;
+      inset: -28px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,149,106,0.22);
+      animation: ringPulse 4s ease-in-out infinite;
+    }
+    .monogram-ring-2 {
+      position: absolute;
+      inset: -44px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,149,106,0.11);
+      animation: ringPulse 4s ease-in-out 1s infinite;
+    }
+    @keyframes ringPulse {
+      0%, 100% { transform: scale(1);   opacity: 1; }
+      50%       { transform: scale(1.04); opacity: 0.6; }
+    }
+
+    .monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(72px, 18vw, 110px);
+      font-weight: 200;
+      letter-spacing: 0.2em;
+      color: transparent;
+      background: linear-gradient(135deg, var(--gold3) 0%, var(--gold) 40%, var(--gold2) 70%, var(--gold3) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 2px 18px rgba(184,149,106,0.18));
+    }
+
+    /* ── Date ── */
+    .event-date {
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      opacity: 0;
+      animation: revealFade 1s ease 0.7s both;
+      margin-bottom: 48px;
+    }
+
+    /* ── Divider ornamental ── */
+    .divider-full {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: revealFade 1s ease 0.9s both;
+    }
+    .div-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(184,149,106,0.3), transparent);
+    }
+    .div-center {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold2);
+      font-size: 10px;
+      opacity: 0.6;
+      letter-spacing: 0.3em;
+    }
+
+    /* ── Message ── */
+    .msg-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(13px, 3.5vw, 16px);
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: revealFade 1s ease 1.0s both;
+    }
+
+    .msg-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 7vw, 40px);
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: revealUp 1s cubic-bezier(0.16,1,0.3,1) 1.15s both;
+    }
+
+    .msg-main em {
+      font-style: italic;
+      color: var(--gold2);
+    }
+
+    .msg-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(12px, 3vw, 14px);
+      font-weight: 300;
+      color: var(--muted2);
+      letter-spacing: 0.10em;
+      line-height: 1.85;
+      max-width: 380px;
+      margin: 0 auto 48px;
+      opacity: 0;
+      animation: revealFade 1.2s ease 1.4s both;
+    }
+
+    /* ── Lock icon ── */
+    .lock-wrap {
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: revealScale 1s cubic-bezier(0.16,1,0.3,1) 1.6s both;
+    }
+
+    .lock-icon {
+      width: 64px;
+      height: 64px;
+      border: 1px solid rgba(184,149,106,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+      background: var(--white);
+      box-shadow: 0 2px 16px rgba(184,149,106,0.10);
+      animation: lockGlow 3s ease-in-out infinite;
+    }
+    @keyframes lockGlow {
+      0%, 100% { box-shadow: 0 2px 16px rgba(184,149,106,0.10); }
+      50%       { box-shadow: 0 4px 32px rgba(184,149,106,0.22); }
+    }
+    .lock-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--gold2);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    /* ── Tagline ── */
+    .tagline {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0;
+      animation: revealFade 1.2s ease 1.8s both;
+    }
+
+    /* ── Bottom ornament ── */
+    .ornament-bottom {
+      margin-top: 44px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0;
+      animation: revealFade 1s ease 2s both;
+    }
+
+    /* ════════════════════════════════════════
+       KEYFRAMES base
+    ════════════════════════════════════════ */
+    @keyframes revealFade {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes revealScale {
+      from { opacity: 0; transform: scale(0.88); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ════════════════════════════════════════
+       FLOATING PETALS (CSS-driven extras)
+    ════════════════════════════════════════ */
+    .petal {
+      position: fixed;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      font-size: 18px;
+      animation: petalFall linear infinite;
+    }
+
+    @keyframes petalFall {
+      0%   { opacity: 0;   transform: translateY(-40px) rotate(0deg) scale(0.6); }
+      10%  { opacity: 0.4; }
+      90%  { opacity: 0.2; }
+      100% { opacity: 0;   transform: translateY(110vh) rotate(520deg) scale(1); }
+    }
+
+    /* Light beam */
+    .beam {
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 55%;
+      background: linear-gradient(to bottom, rgba(184,149,106,0.25), transparent);
+      pointer-events: none;
+      z-index: 1;
+      animation: beamPulse 6s ease-in-out infinite;
+    }
+    @keyframes beamPulse {
+      0%, 100% { opacity: 0.5; transform: translateX(-50%) scaleX(1); }
+      50%       { opacity: 1;   transform: translateX(-50%) scaleX(3); }
+    }
+
+    /* ════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      .monogram-ring   { inset: -16px; }
+      .monogram-ring-2 { inset: -28px; }
+      .orn-line        { width: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-layer"></div>
+  <div class="grain"></div>
+  <div class="beam"></div>
+  <canvas id="canvas"></canvas>
+
+  <!-- Petals CSS -->
+  <div class="petal" style="left:8%;  animation-duration:14s; animation-delay:0s;    font-size:14px; color:#B8956A;">✦</div>
+  <div class="petal" style="left:22%; animation-duration:18s; animation-delay:2.5s;  font-size:10px; color:#8A6840;">✦</div>
+  <div class="petal" style="left:38%; animation-duration:12s; animation-delay:5s;    font-size:8px;  color:#C4A070;">✦</div>
+  <div class="petal" style="left:58%; animation-duration:20s; animation-delay:1s;    font-size:12px; color:#A07848;">✦</div>
+  <div class="petal" style="left:72%; animation-duration:15s; animation-delay:7s;    font-size:9px;  color:#B8956A;">✦</div>
+  <div class="petal" style="left:88%; animation-duration:17s; animation-delay:3s;    font-size:14px; color:#8A6840;">✦</div>
+  <div class="petal" style="left:45%; animation-duration:22s; animation-delay:9s;    font-size:7px;  color:#C4A070;">✦</div>
+  <div class="petal" style="left:15%; animation-duration:13s; animation-delay:11s;   font-size:11px; color:#A07848;">✦</div>
+  <div class="petal" style="left:65%; animation-duration:16s; animation-delay:4s;    font-size:8px;  color:#B8956A;">✦</div>
+  <div class="petal" style="left:82%; animation-duration:19s; animation-delay:6s;    font-size:13px; color:#8A6840;">✦</div>
+
+  <!-- MAIN -->
+  <div class="scene">
+
+    <div class="ornament-top">
+      <div class="orn-line"></div>
+      <div class="orn-diamond">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <div class="orn-line right"></div>
+    </div>
+
+    <div class="monogram-wrap">
+      <div class="monogram-ring-2"></div>
+      <div class="monogram-ring"></div>
+      <span class="monogram">DAAL</span>
+    </div>
+
+    <div class="event-date">25 de Abril &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Santa Marta</div>
+
+    <div class="divider-full">
+      <div class="div-line"></div>
+      <div class="div-center">✦</div>
+      <div class="div-line"></div>
+    </div>
+
+    <p class="msg-label">Acceso Restringido</p>
+
+    <h1 class="msg-main">
+      Esta invitación<br><em>es personal</em>
+    </h1>
+
+    <p class="msg-sub">
+      Para acceder a nuestra tarjeta de boda necesitas<br>
+      un enlace de invitación exclusivo.<br>
+      Si recibiste uno, úsalo directamente.
+    </p>
+
+    <div class="lock-wrap">
+      <div class="lock-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+    </div>
+
+    <p class="tagline">Dangond &nbsp;·&nbsp; Alcázar &nbsp;·&nbsp; 2026</p>
+
+    <div class="ornament-bottom">
+      <div class="orn-line"></div>
+      <div class="orn-diamond">✦</div>
+      <div class="orn-line right"></div>
+    </div>
+
+  </div><!-- /scene -->
+
+  <script>
+    // ════════════════════════════════════════
+    //  CANVAS — partículas doradas flotantes
+    // ════════════════════════════════════════
+    const canvas = document.getElementById('canvas');
+    const ctx    = canvas.getContext('2d');
+
+    let W, H, particles = [];
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', () => { resize(); initParticles(); });
+
+    // Particle class
+    class Particle {
+      constructor() { this.reset(true); }
+
+      reset(randomY = false) {
+        this.x    = Math.random() * W;
+        this.y    = randomY ? Math.random() * H : -10;
+        this.size = Math.random() * 1.5 + 0.4;
+        this.speedY = Math.random() * 0.4 + 0.1;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.drift  = (Math.random() - 0.5) * 0.015;
+        this.alpha  = Math.random() * 0.35 + 0.08;
+        this.alphaDir = (Math.random() - 0.5) * 0.005;
+
+        // Warm gold / sand tones visible on light bg
+        const h = Math.floor(Math.random() * 20 + 28);
+        const s = Math.floor(Math.random() * 25 + 45);
+        const l = Math.floor(Math.random() * 20 + 38);
+        this.color = `hsl(${h}, ${s}%, ${l}%)`;
+      }
+
+      update() {
+        this.y      += this.speedY;
+        this.x      += this.speedX;
+        this.speedX += this.drift;
+        this.alpha  += this.alphaDir;
+        if (this.alpha > 0.45 || this.alpha < 0.04) this.alphaDir *= -1;
+        if (this.y > H + 10) this.reset();
+        if (this.x < -10 || this.x > W + 10) this.reset();
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle   = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Larger glowing orbs
+    class Orb {
+      constructor() { this.reset(); }
+      reset() {
+        this.x     = Math.random() * W;
+        this.y     = Math.random() * H;
+        this.r     = Math.random() * 80 + 40;
+        this.alpha = Math.random() * 0.06 + 0.02;
+        this.speedX = (Math.random() - 0.5) * 0.15;
+        this.speedY = (Math.random() - 0.5) * 0.15;
+        this.phase  = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.phase += 0.008;
+        this.x += this.speedX + Math.sin(this.phase * 0.7) * 0.2;
+        this.y += this.speedY + Math.cos(this.phase * 0.5) * 0.15;
+        if (this.x < -this.r*2 || this.x > W + this.r*2 ||
+            this.y < -this.r*2 || this.y > H + this.r*2) this.reset();
+      }
+      draw() {
+        const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+        grad.addColorStop(0, `rgba(184,149,106,${this.alpha})`);
+        grad.addColorStop(1, 'rgba(184,149,106,0)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [
+        ...Array.from({ length: 90  }, () => new Particle()),
+        ...Array.from({ length: 6   }, () => new Orb()),
+      ];
+    }
+    initParticles();
+
+    // ── Animation loop ──
+    let raf;
+    function loop() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => { p.update(); p.draw(); });
+      raf = requestAnimationFrame(loop);
+    }
+    loop();
+
+    // ════════════════════════════════════════
+    //  Lógica: detectar si hay token en URL
+    //  Si hay token → dejar pasar (no hacer nada aquí,
+    //  el index.html principal lo maneja)
+    // ════════════════════════════════════════
+    const params = new URLSearchParams(window.location.search);
+    const token  = params.get('token');
+
+    // Si este HTML se usa como fallback dentro del index.html,
+    // el código del index ya controla la visibilidad.
+    // Si se usa como página standalone para 404/no-token,
+    // simplemente muestra el contenido actual.
+    if (token) {
+      // Hay token: ocultar esta pantalla (en caso de estar incrustada)
+      document.querySelector('.scene').style.opacity = '0';
+      document.querySelector('.scene').style.pointerEvents = 'none';
+    }
+  </script>
+</body>
+</html>
