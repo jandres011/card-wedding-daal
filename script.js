@@ -119,6 +119,20 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
       document.getElementById("cancion").value,
     );
     formData.append("entry.98286622", document.getElementById("mensaje").value);
+  } else {
+    formData.append(
+      "entry.1097505183",
+      "0 cupos",
+    );
+    formData.append(
+      "entry.1090726590",
+      "No aplica",
+    );
+    formData.append(
+      "entry.1705162034",
+      "No aplica",
+    );
+    formData.append("entry.98286622", "No asistiré");
   }
 
   fetch(formURL, {
@@ -151,6 +165,10 @@ document.getElementById("rsvpForm").addEventListener("submit", function (e) {
     document.getElementById("rsvpForm").reset();
   } else {
     alert("Lamentamos que no puedas asistir. Esperamos verte pronto.");
+    mensaje.style.display = "block";
+    invitados.style.display = "block";
+    restricciones.style.display = "block";
+    cancion.style.display = "block";
     document.getElementById("rsvpForm").reset();
   }
 });
