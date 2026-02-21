@@ -111,7 +111,7 @@ document.getElementById("rsvpForm").addEventListener("submit", async function (e
 
   // Mark token as used
   if (typeof token !== "undefined" && token) {
-    await sb.from("tokens").update({ usado: true }).eq("token", token);
+    await sb.from("tokens").update({ usado: true }).eq("codigo", token);
   }
 
   fetch(formURL, { method: "POST", mode: "no-cors", body: formData });
@@ -362,7 +362,7 @@ const { createClient } = supabase;
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
 
 const params = new URLSearchParams(window.location.search);
-const token  = params.get("token");
+const token  = params.get("codigo");
 
 if (token) {
   verificarToken(token);
@@ -374,13 +374,13 @@ async function verificarToken(token) {
   const { data } = await sb
     .from("tokens")
     .select("*")
-    .eq("token", token)
+    .eq("codigo", token)
     .single();
 
   if (data && !data.usado) {
     document.getElementById("rsvpForm").style.display = "block";
   } else {
-    document.getElementById("rsvp").style.display = "none";
+    window.location.href = "private.html";
   }
 }
 
