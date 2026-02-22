@@ -380,6 +380,7 @@ async function verificarToken(token) {
   if (data && !data.usado) {
     document.getElementById("rsvpForm").style.display = "block";
   } else if (data && data.usado) {
+    document.getElementById("li-rsvp").style.display = "none";
     document.getElementById("rsvp").style.display = "none";
   } else {
     window.location.href = "private.html";
