@@ -379,9 +379,9 @@ async function verificarToken(token) {
 
   if (data && !data.usado) {
     document.getElementById("rsvpForm").style.display = "block";
+  } else if (data && data.usado) {
+    document.getElementById("rsvp").style.display = "none";
   } else {
     window.location.href = "private.html";
   }
 }
-
-// El submit del form ya actualiza el token en el listener de arriba ✓
